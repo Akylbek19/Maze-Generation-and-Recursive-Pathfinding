@@ -50,19 +50,19 @@ public class MazeSolver {
             return true;  // Found exit
         }
 
-        // Mark current cell as visited
+        // Помечаем текущую клетку как посещенную
         visited[y][x] = true;
         if (maze[y][x] != MazeGenerator.START) {
             maze[y][x] = MazeGenerator.VISITED;
         }
 
-        // Recursive cases - explore all directions
-        if (!solved) solve(x+1, y);  // Right
-        if (!solved) solve(x, y+1);  // Down
-        if (!solved) solve(x-1, y);  // Left
-        if (!solved) solve(x, y-1);  // Up
+        // Рекурсивно исследуем все направления:
+        if (!solved) solve(x+1, y);  // Идем вправо
+        if (!solved) solve(x, y+1);  // Идем вниз
+        if (!solved) solve(x-1, y);  // Идем вниз
+        if (!solved) solve(x, y-1);  // Идем вверх
 
-        // Backtrack if path doesn't lead to exit
+        // Если решение не найдено - откатываем изменения
         if (!solved) {
             if (maze[y][x] != MazeGenerator.START) {
                 maze[y][x] = MazeGenerator.PATH;
@@ -73,6 +73,7 @@ public class MazeSolver {
         return solved;
     }
 
+    // Возвращает лабиринт с отмеченным путем
     public char[][] getSolvedMaze() {
         return maze;
     }
