@@ -3,28 +3,28 @@ import java.util.Random;
 import java.util.Stack;
 
 public class MazeGenerator {
-    private int width;
-    private int height;
-    private char[][] maze;
-    private Random random = new Random();
+    private int width;   // Ширина лабиринта
+    private int height;   // Высота лабиринта
+    private char[][] maze;  // 2D массив для хранения лабиринта
+    private Random random = new Random();  // Генератор случайных чисел
 
     // Constants for cell types
-    public static final char WALL = '#';
-    public static final char PATH = ' ';
-    public static final char START = 'S';
-    public static final char EXIT = 'E';
-    public static final char VISITED = '.';
+    public static final char WALL = '#';   // Стена
+    public static final char PATH = ' ';   // Проход
+    public static final char START = 'S';  // Начальная точка
+    public static final char EXIT = 'E';   // Выход
+    public static final char VISITED = '.';  // Посещенная клетка при поиске пути
 
     public MazeGenerator(int width, int height) {
-        // Ensure odd dimensions for proper maze generation
+        // Корректируем размеры, чтобы были нечетными (для правильной генерации)
         this.width = (width % 2 == 0) ? width + 1 : width;
         this.height = (height % 2 == 0) ? height + 1 : height;
         this.maze = new char[this.height][this.width];
         initializeMaze();
     }
 
+    // Инициализация лабиринта (все клетки - стены)
     private void initializeMaze() {
-        // Fill the entire maze with walls
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 maze[y][x] = WALL;
