@@ -1,16 +1,16 @@
 // MazeSolver.java
 public class MazeSolver {
-    private char[][] maze;
-    private boolean[][] visited;
-    private boolean solved = false;
-    private int startX, startY;
-    private int exitX, exitY;
+    private char[][] maze;   // Лабиринт для решения
+    private boolean[][] visited;  // Массив посещенных клеток
+    private boolean solved = false;  // Флаг найденного решения
+    private int startX, startY;   // Координаты старта
+    private int exitX, exitY;   // Координаты выхода
 
     public MazeSolver(char[][] maze) {
         this.maze = maze;
         this.visited = new boolean[maze.length][maze[0].length];
 
-        // Find start and exit positions
+        // Находим стартовую и конечную позиции
         for (int y = 0; y < maze.length; y++) {
             for (int x = 0; x < maze[0].length; x++) {
                 if (maze[y][x] == MazeGenerator.START) {
