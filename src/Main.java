@@ -12,14 +12,14 @@ public class Main {
         System.out.print("Enter maze height (default 21): ");
         int height = readIntWithDefault(scanner, 21);
 
-        // Generate maze
+        // Генерация лабиринта
         MazeGenerator generator = new MazeGenerator(width, height);
         generator.generateMaze();
 
         System.out.println("\nGenerated Maze:");
         generator.printMaze();
 
-        // Solve maze
+        // Решение лабиринта
         MazeSolver solver = new MazeSolver(generator.getMaze());
         boolean solutionFound = solver.solveMaze();
 
@@ -30,7 +30,7 @@ public class Main {
             System.out.println("No path found!");
         }
 
-        // Print solved maze
+        // Вывод результата
         char[][] solvedMaze = solver.getSolvedMaze();
         for (int y = 0; y < solvedMaze.length; y++) {
             for (int x = 0; x < solvedMaze[0].length; x++) {
@@ -40,6 +40,7 @@ public class Main {
         }
     }
 
+    // Вспомогательный метод для чтения чисел с значением по умолчанию
     private static int readIntWithDefault(Scanner scanner, int defaultValue) {
         try {
             String input = scanner.nextLine().trim();
