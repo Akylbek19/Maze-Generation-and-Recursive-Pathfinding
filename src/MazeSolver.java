@@ -24,20 +24,25 @@ public class MazeSolver {
         }
     }
 
+    // Основной метод для запуска решения
     public boolean solveMaze() {
         return solve(startX, startY);
     }
 
+    // Рекурсивный метод поиска пути
     private boolean solve(int x, int y) {
-        // Base cases
+        // Базовые случаи:
+        // 1. Выход за границы лабиринта
         if (x < 0 || x >= maze[0].length || y < 0 || y >= maze.length) {
-            return false;  // Out of bounds
+            return false;
         }
 
+        // 2. Наткнулись на стену или уже посещали эту клетку
         if (maze[y][x] == MazeGenerator.WALL || visited[y][x]) {
             return false;  // Hit wall or already visited
         }
 
+        // 3. Нашли выход
         if (x == exitX && y == exitY) {
             visited[y][x] = true;
             maze[y][x] = MazeGenerator.VISITED;
