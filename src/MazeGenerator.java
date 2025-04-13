@@ -92,15 +92,17 @@ public class MazeGenerator {
             }
         }
 
-        // Set start and exit points
-        maze[1][0] = START;  // Entrance on left wall
-        maze[height-2][width-1] = EXIT;  // Exit on right wall
+        // Устанавливаем начальную и конечную точки
+        maze[1][0] = START;  // Старт в левом верхнем углу
+        maze[height-2][width-1] = EXIT;  // Выход в правом нижнем углу
     }
 
+    // Геттер для получения лабиринта
     public char[][] getMaze() {
         return maze;
     }
 
+    // Вывод лабиринта в консоль
     public void printMaze() {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
